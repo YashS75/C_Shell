@@ -1,0 +1,15 @@
+/* File: Makefile */
+CC=gcc
+CFLAGS=-Iinclude -Wall
+SRC=main.c src/shell.c src/parser.c src/executor.c
+OBJ=$(SRC:.c=.o)
+TARGET=bin/myshell
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	mkdir -p bin
+	$(CC) -o $@ $^
+
+clean:
+	rm -f src/*.o *.o $(TARGET)
